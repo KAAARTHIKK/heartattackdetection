@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heart Attack Risk Predictor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-inner">
+        <span class="header-icon">❤️</span>
+        <div>
+          <h1>Heart Attack Risk Predictor</h1>
+          <p class="subtitle">Enter patient clinical parameters below</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+      <!-- Form Card -->
+      <div class="card form-card">
+        <form id="predictionForm" novalidate>
+
+          <div class="form-grid">
+
+            <!-- Age -->
+            <div class="form-group">
+              <label for="age">Age <span class="unit">(years)</span></label>
+              <input type="number" id="age" name="age" min="1" max="120" step="1"
+                     placeholder="e.g. 52" />
+              <span class="field-error" id="age-error"></span>
+            </div>
+
+            <!-- Sex -->
+            <div class="form-group">
+              <label for="sex">Sex</label>
+              <select id="sex" name="sex">
+                <option value="">Select…</option>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+              </select>
+              <span class="field-error" id="sex-error"></span>
+            </div>
+
+            <!-- Chest Pain Type -->
+            <div class="form-group">
+              <label for="cp">Chest Pain Type</label>
+              <select id="cp" name="cp">
+                <option value="">Select…</option>
+                <option value="0">Typical Angina</option>
+                <option value="1">Atypical Angina</option>
+                <option value="2">Non-Anginal Pain</option>
+                <option value="3">Asymptomatic</option>
+              </select>
+              <span class="field-error" id="cp-error"></span>
+            </div>
+
+            <!-- Resting Blood Pressure -->
+            <div class="form-group">
+              <label for="trestbps">Resting Blood Pressure <span class="unit">(mmHg)</span></label>
+              <input type="number" id="trestbps" name="trestbps" min="80" max="200" step="1"
+                     placeholder="e.g. 125 (normal &lt;120)" />
+              <span class="field-error" id="trestbps-error"></span>
+            </div>
+
+            <!-- Cholesterol -->
+            <div class="form-group">
+              <label for="chol">Cholesterol <span class="unit">(mg/dl)</span></label>
+              <input type="number" id="chol" name="chol" min="100" max="600" step="1"
+                     placeholder="e.g. 212 (normal &lt;200)" />
+              <span class="field-error" id="chol-error"></span>
+            </div>
+
+            <!-- Fasting Blood Sugar -->
+            <div class="form-group">
+              <label for="fbs">Fasting Blood Sugar</label>
+              <select id="fbs" name="fbs">
+                <option value="">Select…</option>
+                <option value="0">≤120 mg/dl</option>
+                <option value="1">&gt;120 mg/dl</option>
+              </select>
+              <span class="field-error" id="fbs-error"></span>
+            </div>
+
+            <!-- Resting ECG -->
+            <div class="form-group">
+              <label for="restecg">Resting ECG</label>
+              <select id="restecg" name="restecg">
+                <option value="">Select…</option>
+                <option value="0">Normal</option>
+                <option value="1">ST-T Wave Abnormality</option>
+                <option value="2">Left Ventricular Hypertrophy</option>
+              </select>
+              <span class="field-error" id="restecg-error"></span>
+            </div>
+
+            <!-- Max Heart Rate -->
+            <div class="form-group">
+              <label for="thalach">Max Heart Rate Achieved <span class="unit">(bpm)</span></label>
+              <input type="number" id="thalach" name="thalach" min="60" max="220" step="1"
+                     placeholder="e.g. 168 (normal 60–100)" />
+              <span class="field-error" id="thalach-error"></span>
+            </div>
+
+            <!-- Exercise Induced Angina -->
+            <div class="form-group">
+              <label for="exang">Exercise Induced Angina</label>
+              <select id="exang" name="exang">
+                <option value="">Select…</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+              <span class="field-error" id="exang-error"></span>
+            </div>
+
+            <!-- ST Depression -->
+            <div class="form-group">
+              <label for="oldpeak">ST Depression <span class="unit">(oldpeak)</span></label>
+              <input type="number" id="oldpeak" name="oldpeak" min="0.0" max="6.2" step="0.1"
+                     placeholder="e.g. 1.0" />
+              <span class="field-error" id="oldpeak-error"></span>
+            </div>
+
+            <!-- ST Slope -->
+            <div class="form-group">
+              <label for="slope">ST Slope</label>
+              <select id="slope" name="slope">
+                <option value="">Select…</option>
+                <option value="0">Upsloping</option>
+                <option value="1">Flat</option>
+                <option value="2">Downsloping</option>
+              </select>
+              <span class="field-error" id="slope-error"></span>
+            </div>
+
+            <!-- Major Vessels -->
+            <div class="form-group">
+              <label for="ca">Major Vessels <span class="unit">(fluoroscopy)</span></label>
+              <select id="ca" name="ca">
+                <option value="">Select…</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <span class="field-error" id="ca-error"></span>
+            </div>
+
+            <!-- Thalassemia -->
+            <div class="form-group">
+              <label for="thal">Thalassemia</label>
+              <select id="thal" name="thal">
+                <option value="">Select…</option>
+                <option value="3">Normal</option>
+                <option value="6">Fixed Defect</option>
+                <option value="7">Reversible Defect</option>
+              </select>
+              <span class="field-error" id="thal-error"></span>
+            </div>
+
+          </div><!-- /.form-grid -->
+
+          <!-- Actions -->
+          <div class="form-actions">
+            <button type="button" id="sampleBtn" class="btn btn-outline">Load Sample Patient</button>
+            <button type="submit" class="btn btn-primary">Analyse Risk</button>
+          </div>
+
+        </form>
+      </div><!-- /.form-card -->
+
+      <!-- Spinner -->
+      <div id="spinner" class="spinner-wrap hidden" aria-live="polite">
+        <div class="spinner"></div>
+        <p>Analysing…</p>
+      </div>
+
+      <!-- Error Alert -->
+      <div id="errorAlert" class="alert-error hidden" role="alert">
+        ⚠️ Could not connect to prediction server. Make sure the backend is running.
+      </div>
+
+      <!-- Results Card -->
+      <div id="resultsCard" class="card results-card hidden">
+
+        <!-- Gauge + Badge row -->
+        <div class="results-top">
+
+          <!-- Circular probability gauge -->
+          <div class="gauge-wrap">
+            <svg class="gauge-svg" viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="gauge-track" cx="60" cy="60" r="50" />
+              <circle class="gauge-fill" id="gaugeFill" cx="60" cy="60" r="50" />
+            </svg>
+            <div class="gauge-label">
+              <span id="gaugePercent">0%</span>
+              <small>probability</small>
+            </div>
+          </div>
+
+          <!-- Risk badge -->
+          <div class="badge-wrap">
+            <div id="riskBadge" class="risk-badge">—</div>
+            <p class="badge-caption">Predicted Risk Level</p>
+            <div id="modelAgreement" class="agreement-badge hidden"></div>
+            <button type="button" id="resetBtn" class="btn btn-outline btn-sm">↩ Reset</button>
+          </div>
+
+        </div>
+
+        <!-- Top Contributing Factors -->
+        <div class="factors-section">
+          <h2 class="factors-title">Top Contributing Factors</h2>
+          <div id="factorsList" class="factors-list"></div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="disclaimer">
+          ⚠️ This tool is for educational purposes only. Not a substitute for professional medical diagnosis.
+        </div>
+
+      </div><!-- /.results-card -->
+
+    </main>
+  </div><!-- /.page-wrapper -->
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -13,7 +13,6 @@ env/
 # Environment variables (IMPORTANT - contains secrets)
 .env
 *.env
-!.env.example
 
 # Jupyter
 .ipynb_checkpoints/

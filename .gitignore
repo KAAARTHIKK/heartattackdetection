@@ -19,7 +19,7 @@ env/
 *.ipynb_checkpoints
 
 # Model artifacts (large files)
-*.joblib
+# *.joblib  # Commented out - models are small enough to commit for deployment
 
 # Node.js / React
 node_modules/

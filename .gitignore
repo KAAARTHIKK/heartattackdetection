@@ -39,3 +39,6 @@ Thumbs.db
 
 # Kiro
 .kiro/
+
+# Claude / AI tooling
+.claude/
